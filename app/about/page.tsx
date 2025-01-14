@@ -17,11 +17,6 @@ const Page = () => {
         return () => { tl.kill() };
     }, []);
 
-
-
-
-
-
     return (
         <section className="relative min-h-screen py-8 justify-start h-full w-full items-start flex-col gap-4 ">
 

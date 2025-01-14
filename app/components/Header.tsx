@@ -5,7 +5,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import SpecialLink from './SpecialLink'
 import gsap from 'gsap'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const Header = () => {
 
@@ -14,22 +14,22 @@ const Header = () => {
     {
       title: "Photos",
       url: "/",
-      onClick:()=>{handleCloseHamBurger()}
+      onClick: () => { handleCloseHamBurger() }
     },
     {
       title: "About",
       url: "/about",
-      onClick:()=>handleCloseHamBurger()
+      onClick: () => handleCloseHamBurger()
     },
     {
       title: "Journal",
       url: "/journal",
-      onClick:()=>handleCloseHamBurger()
+      onClick: () => handleCloseHamBurger()
     },
     {
       title: "Contact",
       url: "/contact",
-      onClick:()=>handleCloseHamBurger()
+      onClick: () => handleCloseHamBurger()
     }
   ]
 
@@ -41,85 +41,83 @@ const Header = () => {
   const hamburgerRefM2 = useRef<HTMLDivElement | null>(null)
 
 
-  const handleOpenHamBurger = () =>{
-    
+  const handleOpenHamBurger = () => {
+
     if (menuRef?.current && hamburgerRefM1?.current && hamburgerRefM2?.current) {
-     // Rotation
-     menuRef.current.style.height = "20rem"
-     hamburgerRefM1.current.style.transform = `rotate(-45deg)`;
-     hamburgerRefM2.current.style.transform = `rotate(45deg)`;
+      // Rotation
+      menuRef.current.style.height = "20rem"
+      hamburgerRefM1.current.style.transform = `rotate(-45deg)`;
+      hamburgerRefM2.current.style.transform = `rotate(45deg)`;
 
-     // Positionnement pour croisement parfait
-     hamburgerRefM2.current.style.top = `-5px`; // Ajusté pour croisement au milieu
-     hamburgerRefM1.current.style.top = `5px`; // Ajusté pour croisement au milieu
+      // Positionnement pour croisement parfait
+      hamburgerRefM2.current.style.top = `-5px`; // Ajusté pour croisement au milieu
+      hamburgerRefM1.current.style.top = `5px`; // Ajusté pour croisement au milieu
 
-     // Positionnement horizontal
-     hamburgerRefM2.current.style.left = `5px`;
-     hamburgerRefM1.current.style.left = `5px`;
-     setIsOpen(true)
+      // Positionnement horizontal
+      hamburgerRefM2.current.style.left = `5px`;
+      hamburgerRefM1.current.style.left = `5px`;
+      setIsOpen(true)
     }
   }
 
 
-  const handleCloseHamBurger = () =>{
-    
+  const handleCloseHamBurger = () => {
+
     if (menuRef?.current && hamburgerRefM1?.current && hamburgerRefM2?.current) {
-    menuRef.current.style.height = "8rem"
-    hamburgerRefM1.current.style.transform = `rotate(0deg)`
-    hamburgerRefM2.current.style.transform = `rotate(0deg)`
-    hamburgerRefM2.current.style.top = `0px`
-    hamburgerRefM1.current.style.top = `0px`
+      menuRef.current.style.height = "8rem"
+      hamburgerRefM1.current.style.transform = `rotate(0deg)`
+      hamburgerRefM2.current.style.transform = `rotate(0deg)`
+      hamburgerRefM2.current.style.top = `0px`
+      hamburgerRefM1.current.style.top = `0px`
 
-    hamburgerRefM2.current.style.left = `0px`
-    hamburgerRefM1.current.style.left = `0px`
-    setIsOpen(false)
+      hamburgerRefM2.current.style.left = `0px`
+      hamburgerRefM1.current.style.left = `0px`
+      setIsOpen(false)
     }
- }
+  }
 
 
- const [pageChanged, setPageChanged] = useState<boolean>(false);
 
 
   const handleToggleHamburger = () => {
-      if (isOpen) {
-       
-        handleCloseHamBurger()
+    if (isOpen) {
 
-      } else {
-        
-        handleOpenHamBurger()
+      handleCloseHamBurger()
+
+    } else {
+
+      handleOpenHamBurger()
     }
   }
 
 
-  const router = useRouter()
   const pathname = usePathname()
 
-const handleAnimatedMenu = () =>{
-  const tl = gsap.timeline({delay:1});
+  const handleAnimatedMenu = () => {
+    const tl = gsap.timeline({ delay: 1 });
     tl.fromTo(
-        ".txtHeader",
-        { y: 20, autoAlpha: 0, filter:"blur(12px)" },
-        { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out",filter:"blur(0px)", stagger: 0.2 }
+      ".txtHeader",
+      { y: 20, autoAlpha: 0, filter: "blur(12px)" },
+      { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out", filter: "blur(0px)", stagger: 0.2 }
     );
 
     return () => { tl.kill() };
-}
+  }
 
-useEffect(() => {
+  useEffect(() => {
     handleAnimatedMenu()
-},[pathname]);
-const tl = gsap.timeline({delay:3});
+  }, [pathname]);
+  const tl = gsap.timeline({ delay: 3 });
 
-useEffect(() => {
-  tl.fromTo(
+  useEffect(() => {
+    tl.fromTo(
       ".logoTxt",
       { x: -80, autoAlpha: 0, },
       { x: 0, autoAlpha: 1, duration: 0.2, ease: "power4.out", stagger: 0.2 }
-  );
+    );
 
-  return () => { tl.kill() };
-}, [pathname]);
+    return () => { tl.kill() };
+  }, [pathname]);
 
 
 
@@ -145,7 +143,7 @@ useEffect(() => {
 
         <div className="flex flex-col py-16 justify-start items-start">
           <p className="py-8 txtHeader text-balance max-w-xs">
-          I am passionate about crafting code and designing visuals that encapsulate the essence of the moment.</p>
+            I am passionate about crafting code and designing visuals that encapsulate the essence of the moment.</p>
 
           <ul className="flex flex-col text-sm txtHeader gap-y-3 justify-start items-start">
             {tabLinksHeader?.map((link: specialLinkType, index: number) => (

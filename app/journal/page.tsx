@@ -49,12 +49,40 @@ const Page = () => {
             title: "Corporate Website for Tech Startup",
             theme: "dev"
         },
+        {
+            date: "01 jan 2025",
+            link: "/",
+            image: image1,
+            title: "Website of American Bank",
+            theme: "dev"
+        },
+        {
+            date: "01 jan 2025",
+            link: "https://special-sale-product-mkgr.vercel.app/",
+            image: image2,
+            title: "E-commerce Platform for Fashion Retail",
+            theme: "dev"
+        },
+        {
+            date: "01 jan 2025",
+            link: "/",
+            image: image1,
+            title: "Website of American Bank",
+            theme: "dev"
+        },
+        {
+            date: "01 jan 2025",
+            link: "https://special-sale-product-mkgr.vercel.app/",
+            image: image2,
+            title: "E-commerce Platform for Fashion Retail",
+            theme: "dev"
+        },
 
     ]
 
 
 
-    
+
     useEffect(() => {
         const tl = gsap.timeline();
 

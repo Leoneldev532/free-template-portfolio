@@ -54,22 +54,22 @@ const App = () => {
   ]
 
 
-    useEffect(() => {
-  
-      const tl = gsap.timeline({delay:1});
-      tl.fromTo(
-          ".txtCard",
-          { y: 20, autoAlpha: 0, filter:"blur(12px)" },
-          { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out",filter:"blur(0px)", stagger: 0.2 }
-      );
-  
-      return () => { tl.kill() };
+  useEffect(() => {
+
+    const tl = gsap.timeline({ delay: 1 });
+    tl.fromTo(
+      ".txtCard",
+      { y: 20, autoAlpha: 0, filter: "blur(12px)" },
+      { y: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out", filter: "blur(0px)", stagger: 0.2 }
+    );
+
+    return () => { tl.kill() };
   });
 
 
   return (
     <section className="   relative min-h-screen py-8 justify-start h-full w-full  grid gap-4 grid-cols-1 sm:grid-cols-2">
-    <h1 className= "md:hidden block text-neutral-400 text-lg">Photos</h1>
+      <h1 className="md:hidden block text-neutral-400 text-lg">Photos</h1>
 
       <div className="flex flex-col w-full gap-y-4">
         {PPhotoCardTab1.map((pPhotoCard: PhotoCardType, index: number) => (
